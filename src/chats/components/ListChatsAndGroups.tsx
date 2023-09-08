@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {FlatList} from 'react-native';
 import data from '../data/chats-and-group-list.json';

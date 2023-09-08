@@ -13,6 +13,8 @@ const light = {
   profileForeground: '#FFFFFF',
   tabInactive: '#87B9B3',
   tabActive: '#F6FBFF',
+  backgroundWeaker: '#E2FDF4',
+  iconActive: '#037158',
   ...commonColor,
 };
 
@@ -25,6 +27,8 @@ const dark = {
   profileForeground: '#CACED1',
   tabInactive: '#6F7D85',
   tabActive: '#05A880',
+  backgroundWeaker: '#3A4856',
+  iconActive: '#D1D7DD',
   ...commonColor,
 };
 

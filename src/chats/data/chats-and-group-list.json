@@ -4,13 +4,15 @@
         "image": null,
         "name": "John Smith",
         "lastMessage": "Ok",
-        "unreadMessage": 0
+        "timestamp": "09:16",
+        "unreadMessages": 0
     },
     {
         "category": "group",
         "image": null,
-        "name": "React Native Developer",
+        "name": "React Developers Group",
         "lastMessage": "Lorem ipsum dolor sit amet.",
-        "unreadMessage": 1
+        "timestamp": "Yesterday",
+        "unreadMessages": 1
     }
 ]
