@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {TextView} from '../shared/components';
 
 const CallsScreen = () => {
-  return <Text>CallsScreen</Text>;
+  return <TextView>CallsScreen</TextView>;
 };
 
 export default CallsScreen;

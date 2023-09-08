@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {TextView} from '../shared/components';
 
 const ChatsScreen = () => {
-  return <Text>ChatsScreen</Text>;
+  return <TextView>ChatsScreen</TextView>;
 };
 
 export default ChatsScreen;

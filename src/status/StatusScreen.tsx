@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {TextView} from '../shared/components';
 
 const StatusScreen = () => {
-  return <Text>StatusScreen</Text>;
+  return <TextView>StatusScreen</TextView>;
 };
 
 export default StatusScreen;

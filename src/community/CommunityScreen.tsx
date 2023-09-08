@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {TextView} from '../shared/components';
 
 const CommunityScreen = () => {
-  return <Text>Community </Text>;
+  return <TextView>Community </TextView>;
 };
 
 export default CommunityScreen;

@@ -1,23 +1,20 @@
 import React from 'react';
-import {
-  DarkTheme,
-  DefaultTheme,
-  NavigationContainer,
-} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import AppNavigator from './src/home/routes/AppNavigator';
+import AppNavigator from './src/shared/routes/AppNavigator';
 import {gStyles} from './src/shared/styles/gStyles';
-import {useColorScheme} from 'react-native';
+import {StatusBar} from 'react-native';
+import useColorTheme from './src/shared/hooks/useColorTheme';
 
 export default function App() {
-  const theme = useColorScheme();
+  const color = useColorTheme();
 
   return (
     <GestureHandlerRootView style={gStyles.flex1}>
       <SafeAreaProvider>
-        <NavigationContainer
-          theme={theme === 'dark' ? DarkTheme : DefaultTheme}>
+        <NavigationContainer>
+          <StatusBar backgroundColor={color.primary} />
           <AppNavigator />
         </NavigationContainer>
       </SafeAreaProvider>
