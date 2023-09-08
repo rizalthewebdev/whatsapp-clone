@@ -21,8 +21,9 @@ const StatusScreen = () => {
           style={[
             {
               backgroundColor: color.backgroundWeaker,
-              borderRadius: 16,
-              padding: 12,
+              borderRadius: 12,
+              padding: 10,
+              elevation: 2,
             },
           ]}>
           <MaterialCommunityIcons
