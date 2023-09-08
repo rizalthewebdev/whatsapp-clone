@@ -33,11 +33,9 @@ const ChatItem = ({item}: PropsType) => {
               style={{
                 fontSize: 12,
                 marginBottom: 8,
-                fontWeight: '600',
+                fontWeight: '500',
                 color:
-                  item?.unreadMessages > 0
-                    ? color.tabActive
-                    : color?.foreground,
+                  item?.unreadMessages > 0 ? color.chatActive : color?.gray,
               }}>
               {item?.timestamp}
             </TextView>
@@ -48,7 +46,7 @@ const ChatItem = ({item}: PropsType) => {
                   {
                     width: 16,
                     height: 16,
-                    backgroundColor: color.tabActive,
+                    backgroundColor: color.chatActive,
                     borderRadius: 8,
                   },
                 ]}>

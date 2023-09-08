@@ -15,6 +15,7 @@ const light = {
   tabActive: '#F6FBFF',
   backgroundWeaker: '#E2FDF4',
   iconActive: '#037158',
+  chatActive: '#12C353',
   ...commonColor,
 };
 
@@ -29,6 +30,7 @@ const dark = {
   tabActive: '#05A880',
   backgroundWeaker: '#3A4856',
   iconActive: '#D1D7DD',
+  chatActive: '#08AE85',
   ...commonColor,
 };
 
