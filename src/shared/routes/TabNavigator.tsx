@@ -3,7 +3,7 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import {Text, useWindowDimensions} from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
-import useTabViewProps from '../../home/hooks/useTabViewProps';
+import useTabViewProps from '../hooks/useTabViewProps';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import useColorTheme from '../hooks/useColorTheme';
 

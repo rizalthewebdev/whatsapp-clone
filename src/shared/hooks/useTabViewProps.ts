@@ -1,5 +1,5 @@
 import CommunityScreen from '../../community/CommunityScreen';
-import ChatsScreen from '../../chats/screens/ChatsScreen';
+import ListChatsScreen from '../../chats/screens/ListChatsScreen';
 import StatusScreen from '../../status/StatusScreen';
 import CallsScreen from '../../calls/CallsScreen';
 
@@ -30,7 +30,7 @@ const useTabViewProps = () => {
 
   const sceneMap = {
     community: CommunityScreen,
-    chats: ChatsScreen,
+    chats: ListChatsScreen,
     status: StatusScreen,
     calls: CallsScreen,
   };

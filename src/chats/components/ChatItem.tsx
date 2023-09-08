@@ -5,6 +5,7 @@ import {gStyles} from '../../shared/styles/gStyles';
 import {TextView} from '../../shared/components';
 import ImageProfile from './ImageProfile';
 import useColorTheme from '../../shared/hooks/useColorTheme';
+import {useNavigation} from '@react-navigation/native';
 
 type PropsType = {
   item: any;
@@ -12,9 +13,10 @@ type PropsType = {
 
 const ChatItem = ({item}: PropsType) => {
   const color = useColorTheme();
+  const {navigate} = useNavigation();
 
   return (
-    <TouchableNativeFeedback>
+    <TouchableNativeFeedback onPress={() => navigate('ChatsScreen')}>
       <View style={[gStyles.flexRowCenterBetween, gStyles.px4, gStyles.py2]}>
         <View style={[gStyles.row, gStyles.itemsCenter, gStyles.flex1]}>
           <ImageProfile {...{item}} />
