@@ -1,0 +1,16 @@
+[
+    {
+        "category": "personal",
+        "image": null,
+        "name": "John Smith",
+        "lastMessage": "Ok",
+        "unreadMessage": 0
+    },
+    {
+        "category": "group",
+        "image": null,
+        "name": "React Native Developer",
+        "lastMessage": "Lorem ipsum dolor sit amet.",
+        "unreadMessage": 1
+    }
+]

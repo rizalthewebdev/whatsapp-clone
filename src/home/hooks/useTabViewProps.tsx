@@ -1,5 +1,5 @@
 import CommunityScreen from '../../community/CommunityScreen';
-import ChatsScreen from '../../chats/ChatsScreen';
+import ChatsScreen from '../../chats/screens/ChatsScreen';
 import StatusScreen from '../../status/StatusScreen';
 import CallsScreen from '../../calls/CallsScreen';
 

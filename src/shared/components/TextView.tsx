@@ -1,11 +1,15 @@
 import React, {PropsWithChildren} from 'react';
-import {Text} from 'react-native';
+import {Text, TextStyle} from 'react-native';
 import useColorTheme from '../hooks/useColorTheme';
 
-const TextView = ({children}: PropsWithChildren) => {
+type PropsType = {
+  style?: TextStyle;
+};
+
+const TextView = ({children, style}: PropsWithChildren & PropsType) => {
   const color = useColorTheme();
 
-  return <Text style={{color: color.foreground}}>{children}</Text>;
+  return <Text style={[{color: color.foreground}, style]}>{children}</Text>;
 };
 
 export default TextView;

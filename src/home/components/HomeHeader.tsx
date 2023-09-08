@@ -20,7 +20,7 @@ const HomeHeader = ({index}: {index: number}) => {
           color: 'white',
           fontSize: 16,
           fontWeight: '600',
-          letterSpacing: 0.85,
+          letterSpacing: 0.5,
         }}>
         WhatsApp
       </Text>

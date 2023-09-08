@@ -8,6 +8,9 @@ export const gStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  itemsCenter: {
+    alignItems: 'center',
+  },
   flexRowCenterBetween: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -22,8 +25,20 @@ export const gStyles = StyleSheet.create({
   p4: {
     padding: 16,
   },
+  py2: {
+    paddingVertical: 8,
+  },
+  px4: {
+    paddingHorizontal: 16,
+  },
   mb4: {
     marginBottom: 16,
+  },
+  ml2: {
+    marginLeft: 8,
+  },
+  ml4: {
+    marginLeft: 16,
   },
   roundedFull: {
     borderRadius: 99999,
