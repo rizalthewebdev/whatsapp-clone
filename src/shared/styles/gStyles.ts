@@ -22,11 +22,20 @@ export const gStyles = StyleSheet.create({
   p2: {
     padding: 8,
   },
+  p3: {
+    padding: 12,
+  },
   p4: {
     padding: 16,
   },
   py2: {
     paddingVertical: 8,
+  },
+  py4: {
+    paddingVertical: 16,
+  },
+  px2: {
+    paddingHorizontal: 8,
   },
   px4: {
     paddingHorizontal: 16,

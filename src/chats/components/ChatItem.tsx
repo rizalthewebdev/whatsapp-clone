@@ -6,6 +6,8 @@ import {TextView} from '../../shared/components';
 import ImageProfile from './ImageProfile';
 import useColorTheme from '../../shared/hooks/useColorTheme';
 import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../../shared/routes/AppNavigator';
 
 type PropsType = {
   item: any;
@@ -13,10 +15,13 @@ type PropsType = {
 
 const ChatItem = ({item}: PropsType) => {
   const color = useColorTheme();
-  const {navigate} = useNavigation();
+  const {navigate} = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   return (
-    <TouchableNativeFeedback onPress={() => navigate('ChatsScreen')}>
+    <TouchableNativeFeedback
+      onPress={() => {
+        navigate('ChatsScreen', {data: item});
+      }}>
       <View style={[gStyles.flexRowCenterBetween, gStyles.px4, gStyles.py2]}>
         <View style={[gStyles.row, gStyles.itemsCenter, gStyles.flex1]}>
           <ImageProfile {...{item}} />

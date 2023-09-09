@@ -1,8 +1,12 @@
 import React from 'react';
-import {TextView} from '../../shared/components';
+import {BaseView, TextView} from '../../shared/components';
 
 const GroupDetailScreen = () => {
-  return <TextView>GroupDetailScreen</TextView>;
+  return (
+    <BaseView>
+      <TextView>GroupDetailScreen</TextView>
+    </BaseView>
+  );
 };
 
 export default GroupDetailScreen;

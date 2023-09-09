@@ -1,8 +1,12 @@
 import React from 'react';
-import {TextView} from '../../shared/components';
+import {BaseView, TextView} from '../../shared/components';
 
 const UserDetailScreen = () => {
-  return <TextView>UserDetailScreen</TextView>;
+  return (
+    <BaseView>
+      <TextView>UserDetailScreen</TextView>
+    </BaseView>
+  );
 };
 
 export default UserDetailScreen;

@@ -5,19 +5,21 @@ import ChatsScreen from '../../chats/screens/ChatsScreen';
 import UserDetailScreen from '../../chats/screens/UserDetailScreen';
 import GroupDetailScreen from '../../chats/screens/GroupDetailScreen';
 
-type StackParamList = {
+export type RootStackParamList = {
   HomeScreen: undefined;
-  ChatsScreen: undefined;
+  ChatsScreen: {data: any};
   UserDetailScreen: undefined;
   GroupDetailScreen: undefined;
 };
 
-const Stack = createStackNavigator<StackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
   return (
     <Stack.Navigator
-      screenOptions={{headerShown: false}}
+      screenOptions={{
+        headerShown: false,
+      }}
       initialRouteName="HomeScreen">
       <Stack.Screen component={HomeScreen} name="HomeScreen" />
       <Stack.Screen component={ChatsScreen} name="ChatsScreen" />
