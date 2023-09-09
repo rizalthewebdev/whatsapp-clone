@@ -21,18 +21,10 @@ const ChatHeader = () => {
   const {goBack, navigate} =
     useNavigation<StackNavigationProp<RootStackParamList>>();
 
-  const handleNavigateToDetail = () => {
-    if (item?.category === 'personal') {
-      navigate('UserDetailScreen');
-    } else {
-      navigate('GroupDetailScreen');
-    }
-  };
-
   return (
     <View
       style={[
-        gStyles.py4,
+        gStyles.py2,
         gStyles.flexRowCenterBetween,
         gStyles.px2,
         {backgroundColor: color.primary, maxWidth: '100%'},
@@ -44,10 +36,18 @@ const ChatHeader = () => {
           <FeatherIcons name="arrow-left" color={color.white} size={20} />
           <ImageProfile size={40} iconSize={16} {...{item}} />
         </Pressable>
-        <TouchableOpacity onPress={handleNavigateToDetail}>
+        <TouchableOpacity
+          onPress={() => {
+            navigate('DetailInformationScreen', {data: item});
+          }}>
           <TextView
             numberOfLines={1}
-            style={{fontWeight: '700', color: color.white, marginLeft: 8}}>
+            style={{
+              fontWeight: '700',
+              color: color.white,
+              marginLeft: 8,
+              fontSize: 16,
+            }}>
             {item?.name}
           </TextView>
         </TouchableOpacity>

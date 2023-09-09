@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {TextInput, TouchableOpacity, View} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {gStyles} from '../../shared/styles/gStyles';
@@ -10,6 +10,8 @@ import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
 const ChatFooter = () => {
   const color = useColorTheme();
 
+  const [message, setMessage] = useState<string>('');
+
   return (
     <View
       style={[
@@ -17,7 +19,7 @@ const ChatFooter = () => {
         gStyles.itemsCenter,
         gStyles.p2,
         {
-          backgroundColor: color.profileBackground,
+          backgroundColor: 'transparent',
           gap: 8,
           position: 'absolute',
           bottom: 0,
@@ -29,15 +31,22 @@ const ChatFooter = () => {
           gStyles.row,
           gStyles.itemsCenter,
           gStyles.roundedFull,
-          {backgroundColor: color.white, height: 40},
+          {
+            backgroundColor: color.inputMessageBackground,
+            height: 44,
+            borderWidth: 0.2,
+            borderColor: color.gray,
+          },
         ]}>
         <TouchableOpacity style={[gStyles.p2]}>
           <SimpleLineIcons name="emotsmile" size={18} color={color.gray} />
         </TouchableOpacity>
         <TextInput
+          value={message}
           placeholder="Message"
           placeholderTextColor={color.gray}
-          style={[gStyles.flex1, {color: color.black, fontSize: 14}]}
+          onChangeText={setMessage}
+          style={[gStyles.flex1, {color: color.foreground, fontSize: 14}]}
         />
         <View
           style={[
@@ -57,10 +66,19 @@ const ChatFooter = () => {
       <TouchableOpacity
         style={[
           gStyles.roundedFull,
-          gStyles.p3,
-          {backgroundColor: color.secondary, elevation: 2},
+          gStyles.flexCenter,
+          {
+            backgroundColor: color.secondary,
+            elevation: 2,
+            width: 44,
+            height: 44,
+          },
         ]}>
-        <MaterialIcons name="keyboard-voice" size={20} color={color.white} />
+        <MaterialIcons
+          name={message.trim() ? 'send' : 'keyboard-voice'}
+          size={20}
+          color={color.white}
+        />
       </TouchableOpacity>
     </View>
   );

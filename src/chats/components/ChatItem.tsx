@@ -26,7 +26,7 @@ const ChatItem = ({item}: PropsType) => {
         <View style={[gStyles.row, gStyles.itemsCenter, gStyles.flex1]}>
           <ImageProfile {...{item}} />
           <View style={[gStyles.ml4]}>
-            <TextView style={{fontWeight: '600', marginBottom: 4}}>
+            <TextView style={{fontWeight: '700', marginBottom: 4}}>
               {item?.name}
             </TextView>
             <TextView

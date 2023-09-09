@@ -1,7 +1,7 @@
 const commonColor = {
   white: '#FFFFFF',
   black: '#000000',
-  gray: '#67757C',
+  gray: '#8694A2',
 };
 
 const light = {
@@ -16,6 +16,7 @@ const light = {
   backgroundWeaker: '#E2FDF4',
   iconActive: '#037158',
   chatActive: '#12C353',
+  inputMessageBackground: '#FFFFFF',
   ...commonColor,
 };
 
@@ -31,6 +32,7 @@ const dark = {
   backgroundWeaker: '#3A4856',
   iconActive: '#D1D7DD',
   chatActive: '#08AE85',
+  inputMessageBackground: '#202931',
   ...commonColor,
 };
 

@@ -5,7 +5,13 @@
         "name": "John Smith",
         "lastMessage": "Ok",
         "timestamp": "09:16",
-        "unreadMessages": 0
+        "unreadMessages": 0,
+        "users": {
+            "userId": "user_1",
+            "image": null,
+            "name": "John Smith",
+            "phoneNumber": "0812312386"
+        }
     },
     {
         "category": "group",
