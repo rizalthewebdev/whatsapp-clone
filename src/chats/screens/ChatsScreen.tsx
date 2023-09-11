@@ -1,25 +1,30 @@
-import React from 'react';
+import React, {useMemo, useState} from 'react';
 import {BaseView} from '../../shared/components';
 import ChatHeader from '../components/ChatHeader';
 import ChatFooter from '../components/ChatFooter';
-import {ImageBackground, useColorScheme} from 'react-native';
-import {gStyles} from '../../shared/styles/gStyles';
 import ChatView from '../components/ChatView';
+import data from '../data/chats.json';
 
 const ChatsScreen = () => {
-  const theme = useColorScheme();
-  const imageSource =
-    theme === 'dark'
-      ? require('../../shared/assets/images/chat-background-dark.jpeg')
-      : require('../../shared/assets/images/chat-background-light.png');
+  const [keyword, setKeyword] = useState('');
+  const [chatsData, setChatsData] = useState(data);
+
+  const filteredBank = useMemo(() => {
+    if (keyword) {
+      const filtered = chatsData?.filter(
+        chat => chat?.text?.toLowerCase()?.indexOf(keyword.toLowerCase()) > -1,
+      );
+
+      return filtered;
+    }
+    return chatsData;
+  }, [chatsData, keyword]);
 
   return (
     <BaseView>
-      <ChatHeader />
-      <ImageBackground source={imageSource} style={[gStyles.flex1]}>
-        <ChatView />
-        <ChatFooter />
-      </ImageBackground>
+      <ChatHeader {...{keyword, setKeyword}} />
+      <ChatView {...{setChatsData, keyword}} chatsData={filteredBank} />
+      <ChatFooter />
     </BaseView>
   );
 };
