@@ -1,78 +1,81 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
-import {TouchableNativeFeedback, View} from 'react-native';
+import React, {useState} from 'react';
+import {TouchableOpacity, View} from 'react-native';
 import {gStyles} from '../../shared/styles/gStyles';
-import {TextView} from '../../shared/components';
-import ImageProfile from './ImageProfile';
+import {Hightlighter, ReactionTooltip, TextView} from '../../shared/components';
 import useColorTheme from '../../shared/hooks/useColorTheme';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../../shared/routes/AppNavigator';
 
-type PropsType = {
-  item: any;
-};
-
-const ChatItem = ({item}: PropsType) => {
+const ChatItem = ({item, userId, chatsData, setChatsData, keyword}: any) => {
   const color = useColorTheme();
-  const {navigate} = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const [showTooltip, setShowTooltip] = useState(false);
+  const isSender = item?.sender === userId;
+
+  const handleAddReaction = (reaction: any) => {
+    const messageIndex = chatsData.findIndex(
+      (message: any) => message.id === item?.id,
+    );
+
+    if (messageIndex !== -1) {
+      const existingReactions = chatsData[messageIndex].reactions;
+
+      if (!existingReactions.includes(reaction)) {
+        const updatedMessage = {
+          ...chatsData[messageIndex],
+          reactions: [...existingReactions, reaction],
+        };
+
+        const updatedMessages = [...chatsData];
+        updatedMessages[messageIndex] = updatedMessage;
+
+        setChatsData(updatedMessages);
+      } else {
+        const filteredReactions = existingReactions.filter(
+          (existingReaction: any) => existingReaction !== reaction,
+        );
+        const updatedMessage = {
+          ...chatsData[messageIndex],
+          reactions: filteredReactions,
+        };
+
+        const updatedMessages = [...chatsData];
+        updatedMessages[messageIndex] = updatedMessage;
+
+        setChatsData(updatedMessages);
+      }
+    }
+  };
 
   return (
-    <TouchableNativeFeedback
-      onPress={() => {
-        navigate('ChatsScreen', {data: item});
-      }}>
-      <View style={[gStyles.flexRowCenterBetween, gStyles.px4, gStyles.py2]}>
-        <View style={[gStyles.row, gStyles.itemsCenter, gStyles.flex1]}>
-          <ImageProfile {...{item}} />
-          <View style={[gStyles.ml4]}>
-            <TextView style={{fontWeight: '700', marginBottom: 4}}>
-              {item?.name}
-            </TextView>
-            <TextView
-              style={{fontWeight: '400', color: color.gray, fontSize: 13}}>
-              {item?.lastMessage}
-            </TextView>
-          </View>
-
-          <View style={[gStyles.flex1, {alignItems: 'flex-end'}]}>
-            <TextView
-              style={{
-                fontSize: 12,
-                marginBottom: 8,
-                fontWeight: '500',
-                color:
-                  item?.unreadMessages > 0 ? color.chatActive : color?.gray,
-              }}>
-              {item?.timestamp}
-            </TextView>
-            {item?.unreadMessages !== 0 ? (
-              <View
-                style={[
-                  gStyles.flexCenter,
-                  {
-                    width: 16,
-                    height: 16,
-                    backgroundColor: color.chatActive,
-                    borderRadius: 8,
-                  },
-                ]}>
-                <TextView
-                  style={{
-                    fontSize: 10,
-                    color: color.background,
-                    fontWeight: '500',
-                  }}>
-                  {item?.unreadMessages}
-                </TextView>
-              </View>
-            ) : (
-              <TextView />
-            )}
-          </View>
+    <ReactionTooltip
+      isVisible={showTooltip}
+      onReactionPress={handleAddReaction}
+      onClose={() => setShowTooltip(false)}>
+      <TouchableOpacity
+        onLongPress={() => setShowTooltip(true)}
+        onPress={() => setShowTooltip(true)}
+        style={[
+          gStyles.p2,
+          gStyles.mx2,
+          {
+            borderRadius: 12,
+            borderTopLeftRadius: isSender ? 12 : 0,
+            borderTopRightRadius: isSender ? 0 : 12,
+            backgroundColor: isSender
+              ? color.chatSenderBackground
+              : color.chatReceiverBackground,
+            alignSelf: isSender ? 'flex-end' : 'flex-start',
+            marginBottom: 8,
+          },
+        ]}>
+        <Hightlighter searchWords={[keyword]} text={item?.text} />
+        <View
+          style={[gStyles.row, gStyles.itemsCenter, {alignSelf: 'flex-end'}]}>
+          {item?.reactions?.map((reaction: any, index: number) => (
+            <TextView key={index}>{reaction}</TextView>
+          ))}
         </View>
-      </View>
-    </TouchableNativeFeedback>
+      </TouchableOpacity>
+    </ReactionTooltip>
   );
 };
 

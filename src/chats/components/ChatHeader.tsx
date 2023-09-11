@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 import {Pressable, TouchableOpacity, View} from 'react-native';
 import {gStyles} from '../../shared/styles/gStyles';
 import useColorTheme from '../../shared/hooks/useColorTheme';
@@ -11,15 +11,26 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../shared/routes/AppNavigator';
+import SearchInput from './SearchInput';
 
-const ChatHeader = () => {
+type PropsType = {
+  keyword: string;
+  setKeyword: Dispatch<SetStateAction<string>>;
+};
+
+const ChatHeader = ({keyword, setKeyword}: PropsType) => {
   const color = useColorTheme();
+  const [isSearching, setIsSearching] = useState(false);
 
   const route = useRoute();
   // @ts-ignore
   const item = route?.params?.data;
   const {goBack, navigate} =
     useNavigation<StackNavigationProp<RootStackParamList>>();
+
+  if (isSearching) {
+    return <SearchInput {...{keyword, setKeyword, setIsSearching}} />;
+  }
 
   return (
     <View
@@ -62,7 +73,9 @@ const ChatHeader = () => {
         ]}>
         <Ionicons name="videocam" size={20} color={color.white} />
         <MaterialIcons name="call" size={20} color={color.white} />
-        <FeatherIcons name="more-vertical" size={20} color={color.white} />
+        <TouchableOpacity onPress={() => setIsSearching(true)}>
+          <FeatherIcons name="search" size={20} color={color.white} />
+        </TouchableOpacity>
       </View>
     </View>
   );

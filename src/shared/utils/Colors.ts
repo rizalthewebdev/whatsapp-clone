@@ -17,6 +17,8 @@ const light = {
   iconActive: '#037158',
   chatActive: '#12C353',
   inputMessageBackground: '#FFFFFF',
+  chatSenderBackground: '#E9FFDA',
+  chatReceiverBackground: '#FFFFFF',
   ...commonColor,
 };
 
@@ -33,6 +35,8 @@ const dark = {
   iconActive: '#D1D7DD',
   chatActive: '#08AE85',
   inputMessageBackground: '#202931',
+  chatSenderBackground: '#005D49',
+  chatReceiverBackground: '#202933',
   ...commonColor,
 };
 

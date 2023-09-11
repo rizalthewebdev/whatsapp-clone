@@ -46,6 +46,12 @@ export const gStyles = StyleSheet.create({
   ml2: {
     marginLeft: 8,
   },
+  my2: {
+    marginVertical: 8,
+  },
+  mx2: {
+    marginHorizontal: 8,
+  },
   ml4: {
     marginLeft: 16,
   },

@@ -1,30 +1,34 @@
 [
     {
-        "message_id": "msg_15",
-        "sender": "user_1",
-        "receiver": "user_5",
+        "id": 15,
+        "sender": 1,
+        "receiver": 5,
         "timestamp": "2023-09-08T16:30:00Z",
-        "text": "Hi Grace, how's your day going?"
+        "text": "Hi Grace, how's your day going?",
+        "reactions": []
     },
     {
-        "message_id": "msg_16",
-        "sender": "user_5",
-        "receiver": "user_1",
+        "id": 16,
+        "sender": 5,
+        "receiver": 1,
         "timestamp": "2023-09-08T16:45:00Z",
-        "text": "Hey Alice, it's been a busy day, but good. How about you?"
+        "text": "Hey Alice, it's been a busy day, but good. How about you?",
+        "reactions": []
     },
     {
-        "message_id": "msg_17",
-        "sender": "user_1",
-        "receiver": "user_5",
+        "id": 17,
+        "sender": 1,
+        "receiver": 5,
         "timestamp": "2023-09-08T17:00:00Z",
-        "text": "I understand! I had a productive day at work. Anything exciting planned for the evening?"
+        "text": "I understand! I had a productive day at work. Anything exciting planned for the evening?",
+        "reactions": []
     },
     {
-        "message_id": "msg_18",
-        "sender": "user_5",
-        "receiver": "user_1",
+        "id": 18,
+        "sender": 5,
+        "receiver": 1,
         "timestamp": "2023-09-08T17:15:00Z",
-        "text": "Not much, just relaxing and catching up on some reading. How about you?"
+        "text": "Not much, just relaxing and catching up on some reading. How about you?",
+        "reactions": []
     }
 ]
