@@ -3,7 +3,7 @@ import React from 'react';
 import {TextView} from '../shared/components';
 import {gStyles} from '../shared/styles/gStyles';
 import {TouchableOpacity, View} from 'react-native';
-import FloatingButton from '../shared/components/FloatingButton';
+import {FloatingButton} from '../shared/components';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import useColorTheme from '../shared/hooks/useColorTheme';
 

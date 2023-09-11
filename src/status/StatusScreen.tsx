@@ -6,7 +6,7 @@ import {gStyles} from '../shared/styles/gStyles';
 import useColorTheme from '../shared/hooks/useColorTheme';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FloatingButton from '../shared/components/FloatingButton';
+import {FloatingButton} from '../shared/components';
 
 const StatusScreen = () => {
   const color = useColorTheme();
