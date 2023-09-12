@@ -76,9 +76,9 @@ const ChatFooter = () => {
           style={[
             gStyles.roundedFull,
             gStyles.flexCenter,
+            gStyles.shadow,
             {
               backgroundColor: color.secondary,
-              elevation: 2,
               width: 44,
               height: 44,
             },

@@ -56,6 +56,7 @@ const ChatItem = ({item, userId, chatsData, setChatsData, keyword}: any) => {
         style={[
           gStyles.p2,
           gStyles.mx2,
+          gStyles.shadow,
           {
             borderRadius: 12,
             borderTopLeftRadius: isSender ? 12 : 0,

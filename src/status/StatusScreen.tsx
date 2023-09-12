@@ -19,11 +19,11 @@ const StatusScreen = () => {
       <FloatingButton>
         <TouchableOpacity
           style={[
+            gStyles.shadow,
             {
               backgroundColor: color.backgroundWeaker,
               borderRadius: 12,
               padding: 10,
-              elevation: 2,
             },
           ]}>
           <MaterialCommunityIcons

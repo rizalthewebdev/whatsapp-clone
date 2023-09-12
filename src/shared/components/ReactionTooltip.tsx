@@ -29,6 +29,7 @@ const ReactionTooltip = ({
         {reactions.map((item, index) => (
           <TouchableOpacity
             key={index}
+            style={[gStyles.shadow]}
             onPress={() => {
               onReactionPress?.(item);
               onClose();
@@ -46,7 +47,7 @@ const ReactionTooltip = ({
       placement="top"
       closeOnContentInteraction={false}
       content={<TooltipContent />}
-      contentStyle={{backgroundColor: color.background}}>
+      contentStyle={[gStyles.shadow, {backgroundColor: color.background}]}>
       {children}
     </Tooltip>
   );

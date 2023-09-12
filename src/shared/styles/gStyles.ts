@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 
 export const gStyles = StyleSheet.create({
   flex1: {
@@ -57,5 +57,18 @@ export const gStyles = StyleSheet.create({
   },
   roundedFull: {
     borderRadius: 99999,
+  },
+  shadow: {
+    shadowColor: '#696969',
+    ...Platform.select({
+      android: {
+        elevation: 4,
+      },
+      ios: {
+        shadowOffset: {width: 0, height: 1},
+        shadowOpacity: 0.75,
+        shadowRadius: 2,
+      },
+    }),
   },
 });

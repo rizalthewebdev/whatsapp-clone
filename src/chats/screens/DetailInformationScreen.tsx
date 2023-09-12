@@ -1,30 +1,41 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BaseView, TextView} from '../../shared/components';
-import {StatusBar, View, useColorScheme} from 'react-native';
+import {View, useColorScheme} from 'react-native';
 import useColorTheme from '../../shared/hooks/useColorTheme';
 import HeaderDetailInformation from '../components/HeaderDetailInformation';
 import {useIsFocused, useRoute} from '@react-navigation/native';
 import {gStyles} from '../../shared/styles/gStyles';
 import ImageProfile from '../components/ImageProfile';
+import {useGlobalState} from '../../shared/providers/StateProvider';
 
 const DetailInformationScreen = () => {
   const color = useColorTheme();
   const theme = useColorScheme();
   const isFocused = useIsFocused();
   const route = useRoute();
+  const {setStatusBar} = useGlobalState();
+
+  useEffect(() => {
+    if (isFocused) {
+      setStatusBar?.({
+        barStyle: theme === 'dark' ? 'light-content' : 'dark-content',
+        backgroundColor: color.background,
+      });
+    } else {
+      setStatusBar?.({
+        barStyle: 'light-content',
+        backgroundColor: color.primary,
+      });
+    }
+  }, [color.background, color.primary, isFocused, setStatusBar, theme]);
+
   // @ts-ignore
   const item = route?.params?.data;
   const isGroup = item?.category !== 'personal';
 
   return (
     <BaseView>
-      {isFocused && (
-        <StatusBar
-          backgroundColor={color.background}
-          barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
-        />
-      )}
       <HeaderDetailInformation />
       <View style={[gStyles.flexCenter]}>
         <ImageProfile size={124} iconSize={48} {...{item}} />
