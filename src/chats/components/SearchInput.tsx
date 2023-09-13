@@ -1,18 +1,33 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import useColorTheme from '../../shared/hooks/useColorTheme';
 import {gStyles} from '../../shared/styles/gStyles';
 import {TextInput, TouchableOpacity, View} from 'react-native';
 import FeatherIcons from 'react-native-vector-icons/Feather';
+import {useChats} from '../../shared/providers/ChatProvider';
 
 type PropsType = {
-  keyword: string;
-  setKeyword: Dispatch<SetStateAction<string>>;
   setIsSearching: Dispatch<SetStateAction<boolean>>;
 };
 
-const SearchInput = ({keyword, setKeyword, setIsSearching}: PropsType) => {
+const SearchInput = ({setIsSearching}: PropsType) => {
   const color = useColorTheme();
+  const {keyword, setKeyword} = useChats();
+
+  const [debouncedKeyword, setDebouncedKeyword] = useState(keyword);
+
+  useEffect(() => {
+    setDebouncedKeyword(keyword);
+  }, [keyword]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setKeyword(debouncedKeyword);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedKeyword]);
 
   return (
     <View
@@ -38,8 +53,8 @@ const SearchInput = ({keyword, setKeyword, setIsSearching}: PropsType) => {
           placeholder="Search"
           placeholderTextColor={color.gray}
           autoFocus
-          value={keyword}
-          onChangeText={setKeyword}
+          value={debouncedKeyword}
+          onChangeText={setDebouncedKeyword}
           style={[
             gStyles.flex1,
             {

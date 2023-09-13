@@ -12,6 +12,7 @@ import {gStyles} from '../../shared/styles/gStyles';
 import useColorTheme from '../../shared/hooks/useColorTheme';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
+import {useChats} from '../../shared/providers/ChatProvider';
 
 const ChatFooter = () => {
   const color = useColorTheme();
@@ -22,6 +23,8 @@ const ChatFooter = () => {
       : require('../../shared/assets/images/chat-background-light.png');
 
   const [message, setMessage] = useState<string>('');
+
+  const {handleAddNewMessage} = useChats();
 
   return (
     <ImageBackground source={imageSource}>
@@ -73,6 +76,10 @@ const ChatFooter = () => {
         </View>
 
         <TouchableOpacity
+          onPress={() => {
+            message.trim() ? handleAddNewMessage?.({message}) : null;
+            setMessage('');
+          }}
           style={[
             gStyles.roundedFull,
             gStyles.flexCenter,

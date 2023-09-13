@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import merge from 'lodash/fp/merge';
 
-function fetch(params, headers = {}) {
+function fetch(params: any, headers = {}) {
   const instance = axios.create();
   // Create a new CancelToken source for this request
   const source = axios.CancelToken.source();
@@ -13,11 +13,6 @@ function fetch(params, headers = {}) {
     headers: merge(headers, params.headers),
     cancelToken: source.token,
   });
-
-  // Cancel the request if React Query calls the `promise.cancel` method
-  promise.cancel = () => {
-    source.cancel('Query was cancelled by React Query');
-  };
 
   return promise;
 }

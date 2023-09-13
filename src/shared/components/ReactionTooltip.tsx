@@ -11,7 +11,7 @@ type PropsType = {
   isVisible: boolean;
   onClose: () => any;
   children: ReactNode;
-  onReactionPress?: (reaction: any) => any;
+  onReactionPress?: ({reaction, data}: any) => any;
 };
 
 const ReactionTooltip = ({
@@ -26,15 +26,15 @@ const ReactionTooltip = ({
   const TooltipContent = () => {
     return (
       <View style={[gStyles.row, gStyles.itemsCenter, {gap: 8, width: 100}]}>
-        {reactions.map((item, index) => (
+        {reactions.map((reaction, index) => (
           <TouchableOpacity
             key={index}
             style={[gStyles.shadow]}
             onPress={() => {
-              onReactionPress?.(item);
+              onReactionPress?.({reaction});
               onClose();
             }}>
-            <TextView>{item}</TextView>
+            <TextView>{reaction}</TextView>
           </TouchableOpacity>
         ))}
       </View>

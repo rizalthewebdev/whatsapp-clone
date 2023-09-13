@@ -4,51 +4,20 @@ import {TouchableOpacity, View} from 'react-native';
 import {gStyles} from '../../shared/styles/gStyles';
 import {Hightlighter, ReactionTooltip, TextView} from '../../shared/components';
 import useColorTheme from '../../shared/hooks/useColorTheme';
+import {useChats} from '../../shared/providers/ChatProvider';
 
-const ChatItem = ({item, userId, chatsData, setChatsData, keyword}: any) => {
+const ChatItem = ({item, userId}: any) => {
   const color = useColorTheme();
+  const {keyword, handleAddReactions} = useChats();
   const [showTooltip, setShowTooltip] = useState(false);
   const isSender = item?.sender === userId;
-
-  const handleAddReaction = (reaction: any) => {
-    const messageIndex = chatsData.findIndex(
-      (message: any) => message.id === item?.id,
-    );
-
-    if (messageIndex !== -1) {
-      const existingReactions = chatsData[messageIndex].reactions;
-
-      if (!existingReactions.includes(reaction)) {
-        const updatedMessage = {
-          ...chatsData[messageIndex],
-          reactions: [...existingReactions, reaction],
-        };
-
-        const updatedMessages = [...chatsData];
-        updatedMessages[messageIndex] = updatedMessage;
-
-        setChatsData(updatedMessages);
-      } else {
-        const filteredReactions = existingReactions.filter(
-          (existingReaction: any) => existingReaction !== reaction,
-        );
-        const updatedMessage = {
-          ...chatsData[messageIndex],
-          reactions: filteredReactions,
-        };
-
-        const updatedMessages = [...chatsData];
-        updatedMessages[messageIndex] = updatedMessage;
-
-        setChatsData(updatedMessages);
-      }
-    }
-  };
 
   return (
     <ReactionTooltip
       isVisible={showTooltip}
-      onReactionPress={handleAddReaction}
+      onReactionPress={({reaction}) =>
+        handleAddReactions?.({reaction, data: item})
+      }
       onClose={() => setShowTooltip(false)}>
       <TouchableOpacity
         onLongPress={() => setShowTooltip(true)}
@@ -66,9 +35,23 @@ const ChatItem = ({item, userId, chatsData, setChatsData, keyword}: any) => {
               : color.chatReceiverBackground,
             alignSelf: isSender ? 'flex-end' : 'flex-start',
             marginBottom: 8,
+            maxWidth: '80%',
           },
         ]}>
+        {!isSender && item?.senderName && (
+          <TextView
+            style={[
+              {
+                paddingBottom: 4,
+                fontWeight: '600',
+                alignSelf: isSender ? 'flex-end' : 'flex-start',
+              },
+            ]}>
+            {item?.senderName}
+          </TextView>
+        )}
         <Hightlighter searchWords={[keyword]} text={item?.text} />
+
         <View
           style={[gStyles.row, gStyles.itemsCenter, {alignSelf: 'flex-end'}]}>
           {item?.reactions?.map((reaction: any, index: number) => (

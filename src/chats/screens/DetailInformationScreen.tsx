@@ -50,12 +50,10 @@ const DetailInformationScreen = () => {
             <TextView style={{color: color.gray, fontSize: 12}}>Group</TextView>
             <TextView style={{color: color.gray, fontSize: 12}}>•</TextView>
             <TextView style={{color: color.gray, fontSize: 12}}>
-              2 participants
+              5 participants
             </TextView>
           </View>
         )}
-
-        <View style={[gStyles.row, gStyles.itemsCenter, {gap: 16}]}></View>
       </View>
     </BaseView>
   );

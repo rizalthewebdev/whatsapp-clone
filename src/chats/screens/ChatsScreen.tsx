@@ -1,30 +1,22 @@
-import React, {useMemo, useState} from 'react';
+import React from 'react';
 import {BaseView} from '../../shared/components';
 import ChatHeader from '../components/ChatHeader';
 import ChatFooter from '../components/ChatFooter';
 import ChatView from '../components/ChatView';
-import data from '../data/chats.json';
+import {ChatProvider} from '../../shared/providers';
+import {useRoute} from '@react-navigation/native';
 
 const ChatsScreen = () => {
-  const [keyword, setKeyword] = useState('');
-  const [chatsData, setChatsData] = useState(data);
-
-  const filteredBank = useMemo(() => {
-    if (keyword) {
-      const filtered = chatsData?.filter(
-        chat => chat?.text?.toLowerCase()?.indexOf(keyword.toLowerCase()) > -1,
-      );
-
-      return filtered;
-    }
-    return chatsData;
-  }, [chatsData, keyword]);
+  const {params} = useRoute();
+  const data = params?.data;
 
   return (
     <BaseView>
-      <ChatHeader {...{keyword, setKeyword}} />
-      <ChatView {...{setChatsData, keyword}} chatsData={filteredBank} />
-      <ChatFooter />
+      <ChatProvider>
+        <ChatHeader />
+        <ChatView {...{data}} />
+        <ChatFooter />
+      </ChatProvider>
     </BaseView>
   );
 };

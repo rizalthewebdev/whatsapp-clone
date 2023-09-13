@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import React, {useState} from 'react';
 import {Pressable, TouchableOpacity, View} from 'react-native';
 import {gStyles} from '../../shared/styles/gStyles';
 import useColorTheme from '../../shared/hooks/useColorTheme';
@@ -13,12 +13,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../shared/routes/AppNavigator';
 import SearchInput from './SearchInput';
 
-type PropsType = {
-  keyword: string;
-  setKeyword: Dispatch<SetStateAction<string>>;
-};
-
-const ChatHeader = ({keyword, setKeyword}: PropsType) => {
+const ChatHeader = () => {
   const color = useColorTheme();
   const [isSearching, setIsSearching] = useState(false);
 
@@ -29,7 +24,7 @@ const ChatHeader = ({keyword, setKeyword}: PropsType) => {
     useNavigation<StackNavigationProp<RootStackParamList>>();
 
   if (isSearching) {
-    return <SearchInput {...{keyword, setKeyword, setIsSearching}} />;
+    return <SearchInput {...{setIsSearching}} />;
   }
 
   return (

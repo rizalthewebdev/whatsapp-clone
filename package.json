@@ -19,7 +19,6 @@
     "@tanstack/react-query": "^4.35.0",
     "@tanstack/react-query-persist-client": "^4.35.0",
     "axios": "^1.5.0",
-    "dayjs": "^1.11.9",
     "lodash": "^4.17.21",
     "react": "18.2.0",
     "react-native": "0.72.4",
