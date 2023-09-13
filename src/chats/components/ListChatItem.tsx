@@ -25,11 +25,12 @@ const ListChatItem = ({item}: PropsType) => {
       <View style={[gStyles.flexRowCenterBetween, gStyles.px4, gStyles.py2]}>
         <View style={[gStyles.row, gStyles.itemsCenter, gStyles.flex1]}>
           <ImageProfile {...{item}} />
-          <View style={[gStyles.ml4]}>
+          <View style={[gStyles.ml4, {flex: 4}]}>
             <TextView style={{fontWeight: '700', marginBottom: 4}}>
               {item?.name}
             </TextView>
             <TextView
+              numberOfLines={1}
               style={{fontWeight: '400', color: color.gray, fontSize: 13}}>
               {item?.lastMessage}
             </TextView>
